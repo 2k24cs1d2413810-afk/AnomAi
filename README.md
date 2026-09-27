@@ -1,0 +1,2 @@
+# AnomAi
+Data Anomaly Detection 
