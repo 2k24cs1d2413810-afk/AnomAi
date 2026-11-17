@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AnomAI · Data Reliability Platform</title>
+    <link rel="icon" href="data:,">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="navbar">
+    <a class="brand" href="/anomai"><span class="brand-mark">A</span><span><strong>AnomAI</strong><small>Enterprise Data Reliability</small></span></a>
+    <nav id="navActions"></nav>
+</header>
+
+<main class="container">
+    <section id="authView" class="auth-layout">
+        <div class="hero-copy">
+            <span class="eyebrow">SCHEMA FIRST · EVIDENCE BASED</span>
+            <h1>Find what is wrong with your data before it reaches your ML pipeline.</h1>
+            <p>AnomAI profiles enterprise datasets, detects data-quality and statistical anomalies, scores reliability, performs traceable remidiation and keeps a private analysis history for every user.</p>
+            <div class="feature-list">
+                <span>✓ Schema analysis</span><span>✓ Rule + IQR + Isolation Forest</span><span>✓ Safe remidiation</span><span>✓ Audit trail</span>
+            </div>
+        </div>
+        <div class="auth-card">
+            <div class="tabs"><button id="loginTab" class="active">Login</button><button id="registerTab">Create account</button></div>
+            <form id="loginForm">
+                <label>Email<input id="loginEmail" type="email" required autocomplete="email"></label>
+                <label>Password<input id="loginPassword" type="password" required autocomplete="current-password"></label>
+                <button class="primary" type="submit">Login</button>
+            </form>
+            <form id="registerForm" class="hidden">
+                <label>Name<input id="registerName" type="text" minlength="2" required></label>
+                <label>Email<input id="registerEmail" type="email" required autocomplete="email"></label>
+                <label>Password<input id="registerPassword" type="password" minlength="8" required autocomplete="new-password"></label>
+                <button class="primary" type="submit">Create account</button>
+            </form>
+            <div id="authMessage" class="message hidden"></div>
+        </div>
+    </section>
+
+    <section id="appView" class="hidden">
+        <div class="hero compact"><div><span class="eyebrow">DATA RELIABILITY WORKSPACE</span><h1>Analyze, explain, clean.</h1><p>Upload a tabular or JSON dataset. AnomAI establishes its schema first, then runs quality, statistical and ML checks.</p></div></div>
+        <section class="card upload-card">
+            <div class="section-head"><div><h2>Analyze dataset</h2><p>Maximum 25 MB. CSV, TSV, TXT, XLS, XLSX, ODS, JSON, JSONL, NDJSON, XML and Parquet.</p></div></div>
+            <form id="uploadForm">
+                <label class="dropzone" for="dataset"><span class="upload-icon">↑</span><strong id="fileName">Choose a dataset</strong><small>Click to select a file</small><input id="dataset" name="dataset" type="file" hidden></label>
+                <button id="analyzeButton" class="primary" type="submit">Analyze Dataset</button>
+            </form>
+            <div id="uploadMessage" class="message hidden"></div>
+        </section>
+
+        <section id="dashboard" class="hidden">
+            <div class="metric-grid">
+                <div class="metric"><span>Original rows</span><strong id="originalRows">—</strong></div>
+                <div class="metric"><span>Cleaned rows</span><strong id="cleanedRows">—</strong></div>
+                <div class="metric"><span>Columns</span><strong id="columns">—</strong></div>
+                <div class="metric"><span>Changes</span><strong id="changesApplied">—</strong></div>
+                <div class="metric"><span>Reliability</span><strong id="overallScore">—</strong></div>
+                <div class="metric"><span>ML readiness</span><strong id="mlScore">—</strong></div>
+            </div>
+
+            <div class="grid-2">
+                <section class="card"><div class="section-head"><h2>Schema</h2><span id="schemaRows"></span></div><div class="table-wrap"><table><thead><tr><th>Column</th><th>Type</th><th>Role</th><th>Nullable</th></tr></thead><tbody id="schemaBody"></tbody></table></div></section>
+                <section class="card"><div class="section-head"><h2>Quality</h2></div><div id="qualityBox" class="quality-list"></div></section>
+            </div>
+
+            <section class="card"><div class="section-head"><h2>Detection summary</h2><span id="interpretation"></span></div><div id="detectionSummary" class="summary-grid"></div></section>
+            <section class="card"><div class="section-head"><h2>Findings</h2></div><div class="table-wrap"><table><thead><tr><th>Row</th><th>Column</th><th>Issue</th><th>Method</th><th>Severity</th><th>Confidence</th></tr></thead><tbody id="findingsBody"></tbody></table></div></section>
+            <section class="card"><div class="section-head"><h2>Remidiation & audit</h2><span id="remidiationCount"></span></div><div id="remidiationBox"></div></section>
+            <section class="card download-card"><div><h2>Cleaned dataset</h2><p id="downloadInfo">Your cleaned dataset is stored with this analysis.</p></div><button id="downloadButton" class="primary">Download cleaned data</button></section>
+        </section>
+    </section>
+
+    <section id="historyView" class="hidden">
+        <div class="hero compact"><div><span class="eyebrow">PRIVATE HISTORY</span><h1>Your analysis history.</h1><p>Only the authenticated account owner can access these records.</p></div></div>
+        <section class="card"><div class="section-head"><h2>Previous analyses</h2><button id="backToApp" class="secondary">Back to workspace</button></div><div id="historyList"></div></section>
+    </section>
+</main>
+<footer>AnomAI · Enterprise Data Reliability Platform</footer>
+<script src="/app.js"></script>
+</body>
+</html>

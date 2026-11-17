@@ -1,0 +1,8 @@
+backend/node_modules/
+backend/uploads/
+backend/storage/cleaned/
+backend/.env
+mlservices/venv/
+mlservices/__pycache__/
+mlservices/app/**/__pycache__/
+*.pyc
